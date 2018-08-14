@@ -6,6 +6,9 @@
 </template>
 
 <script>
+// import fetch from '../src/fetch';
+
+const modal = weex.requireModule('modal');
 
 export default {
   name: 'App',
@@ -14,6 +17,19 @@ export default {
       logo: 'https://gw.alicdn.com/tfs/TB1yopEdgoQMeJjy1XaXXcSsFXa-640-302.png',
     };
   },
+  created() {
+    fetch('http://proxy.zprial.com/proxy?url=https://api.zhuishushenqi.com/book/508646479dacd30e3a000001')
+      .then((resp) => {
+        console.log(2333, resp);
+        return resp.json();
+      })
+      .then((result) => {
+        console.log(4444, result);
+        modal.toast({
+          message: JSON.stringify(result)
+        });
+      });
+  }
 };
 </script>
 
