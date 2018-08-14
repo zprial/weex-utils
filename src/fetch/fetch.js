@@ -31,6 +31,7 @@ export default function (input, init) {
         statusText: ret.statusText,
         headers: new Headers(ret.headers)
       };
+      options.url = 'responseURL' in ret ? ret.responseURL : options.headers.get('X-Request-URL');
       const body = ret.data ? ret.data : '';
       resolve(new Response(body, options));
     });
