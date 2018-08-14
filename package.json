@@ -18,7 +18,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "vue": "2.5.16",
+    "vue": "^2.5.17",
     "weex-vue-render": "^1.0.28"
   },
   "devDependencies": {
@@ -60,7 +60,7 @@
     "url-loader": "^1.0.1",
     "vue-loader": "^15.3.0",
     "vue-style-loader": "^4.1.1",
-    "vue-template-compiler": "2.5.16",
+    "vue-template-compiler": "^2.5.17",
     "webpack": "^4.16.5",
     "webpack-bundle-analyzer": "^2.13.1",
     "webpack-cli": "^3.1.0",
