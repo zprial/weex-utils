@@ -1,34 +1,38 @@
 <template>
   <div class="wrapper">
-    <image :src="logo" class="logo" />
-    <text class="greeting">The environment is ready!</text>
+    <image :src="logo" class="logo" @click="onClick"/>
+    <text class="greeting">{{innerText}}</text>
   </div>
 </template>
 
 <script>
-// import fetch from '../src/fetch';
-
-const modal = weex.requireModule('modal');
+import fetch from '../src/fetch';
 
 export default {
   name: 'App',
   data() {
     return {
       logo: 'https://gw.alicdn.com/tfs/TB1yopEdgoQMeJjy1XaXXcSsFXa-640-302.png',
+      innerText: 'The environment is ready!'
     };
   },
-  created() {
-    fetch('http://proxy.zprial.com/proxy?url=https://api.zhuishushenqi.com/book/508646479dacd30e3a000001')
-      .then((resp) => {
-        console.log(2333, resp);
-        return resp.json();
+  methods: {
+    onClick() {
+      fetch('http://192.168.102.216:3002/proxy?url=https://api.zhuishushenqi.com/book/508646479dacd30e3a000001', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded; UTF-8',
+        },
       })
-      .then((result) => {
-        console.log(4444, result);
-        modal.toast({
-          message: JSON.stringify(result)
+        .then(resp => resp.text())
+        .then((result) => {
+          console.log(`retult ok: ${JSON.stringify(result)}`);
+          this.innerText = result;
+        })
+        .catch((error) => {
+          this.innerText = `error: ${error.message}`;
         });
-      });
+    }
   }
 };
 </script>

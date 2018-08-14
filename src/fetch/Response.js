@@ -1,5 +1,6 @@
 // https://developer.mozilla.org/zh-CN/docs/Web/API/Response
 import Body from './Body';
+import Headers from './Headers';
 
 export default class Response extends Body {
   constructor(bodyInit, options = {}) {

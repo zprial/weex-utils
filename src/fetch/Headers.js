@@ -48,7 +48,7 @@ export default class Headers {
     this.map = {};
 
     if (headers instanceof Headers) {
-      Headers.forEach((value, name) => this.append(value, name));
+      headers.forEach((value, name) => this.append(name, value));
     } else if (Array.isArray(headers)) {
       headers.forEach(header => this.append(header[0], header[1]));
     } else if (headers) {
