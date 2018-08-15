@@ -2,6 +2,10 @@
 
 [https://developer.mozilla.org/zh-CN/docs/Web/API/Document](https://developer.mozilla.org/zh-CN/docs/Web/API/Document)
 
+> weex 中 Dom 操作虽然不被推荐，但有时候我们还是想往 "文档" 中插入节点，这时候 document 就能大显身手了
+
+> 注：请在 mounted 之后在操作DOM
+
 ## 属性
 
 ### documentElement

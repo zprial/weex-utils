@@ -6,8 +6,12 @@
 
 <script>
 import document from '../../src/document';
+import URL from '../../src/location/URL';
 
 const modal = weex.requireModule('modal');
+const navigator = weex.requireModule('navigator');
+
+console.log(new URL('https://anonymous:flabada@developer.mozilla.org/en-US/docs/HTMLHyperlinkElementUtils.username?name=zzzz#3333'));
 
 export default {
   mounted() {
@@ -27,6 +31,10 @@ export default {
         message: '23333'
       }, value => {
         div.removeEventListener('click');
+        navigator.pop();
+        navigator.push({
+          url: "http://192.168.102.216:8081/dist/fetch/index.js"
+        });
       });
     });
 
@@ -40,7 +48,7 @@ export default {
     const text = document.createElement('text');
     text.setAttribute('value', '这是一个链接');
     a.title = 'link';
-    a.href = "http://192.168.102.216:8081/dist/fetch/index.js";
+    a.href = "http://ztktct:zt123@192.168.102.216:8081/dist/fetch/index.js";
     a.appendChild(text);
     document.body.appendChild(a);
 

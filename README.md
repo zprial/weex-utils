@@ -4,3 +4,4 @@
 
 * [Fetch](./docs/fetch.md)
 * [Document](./docs/document.md)
+* [location](./docs/location)
