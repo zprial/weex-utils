@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import fetch from '../src/fetch';
+import fetch from '../../src/fetch';
 
 export default {
   name: 'App',
