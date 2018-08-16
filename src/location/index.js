@@ -14,4 +14,6 @@ if (platform === 'Web' && global && global.location) {
   location = require('./location').default; // eslint-disable-line
 }
 
+export const URL = require('./URL').default; // eslint-disable-line
+
 export default location;

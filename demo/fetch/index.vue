@@ -6,7 +6,9 @@
 </template>
 
 <script>
-import fetch from '../../src/fetch';
+import fetch from 'weex-utils/lib/fetch';
+
+const modal = weex.requireModule('modal');
 
 export default {
   name: 'App',
@@ -18,7 +20,7 @@ export default {
   },
   methods: {
     onClick() {
-      fetch('http://192.168.102.216:3002/proxy?url=https://api.zhuishushenqi.com/book/508646479dacd30e3a000001', {
+      fetch('https://api.douban.com/v2/book/search?q=%E5%B0%86%E5%A4%9C', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded; UTF-8',
@@ -26,8 +28,9 @@ export default {
       })
         .then(resp => resp.text())
         .then((result) => {
-          console.log(`retult ok: ${JSON.stringify(result)}`);
-          this.innerText = result;
+          modal.toast({
+            message: result
+          });
         })
         .catch((error) => {
           this.innerText = `error: ${error.message}`;

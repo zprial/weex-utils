@@ -48,6 +48,8 @@ module.exports = {
      */
     chunkFilename: '[id].[chunkhash].chunk.js',
 
+    globalObject: 'global',
+    // https://doc.webpack-china.org/configuration/output#output-librarytarget
     library: '[name]',
     libraryTarget: 'umd' // 在 AMD 或 CommonJS 的 require 之后可访问
   },

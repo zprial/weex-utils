@@ -1,6 +1,6 @@
 {
   "name": "weex-utils",
-  "version": "0.1.1",
+  "version": "0.1.3",
   "description": "Utils for smooth weex and web platform gap",
   "author": "zprial",
   "private": false,
@@ -15,8 +15,12 @@
     "analyse": "npm run clean && NODE_ENV=analyse webpack --env.NODE_ENV=production && echo ok"
   },
   "keywords": [
-    "weex"
+    "weex",
+    "fetch",
+    "document",
+    "location"
   ],
+  "module": "src/index.js",
   "main": "lib/index.js",
   "files": [
     "src",
@@ -76,7 +80,7 @@
     "webpack-dev-server": "^3.1.5",
     "webpack-merge": "^4.1.4",
     "weex-loader": "^0.7.9",
-    "weex-utils": "^0.1.1",
+    "weex-utils": "^0.1.3",
     "weex-vue-precompiler": "^0.1.22",
     "weex-vue-render": "^1.0.28"
   }

@@ -5,13 +5,10 @@
 </template>
 
 <script>
-import document from '../../src/document';
-import URL from '../../src/location/URL';
+import { document, location } from 'weex-utils';
 
 const modal = weex.requireModule('modal');
 const navigator = weex.requireModule('navigator');
-
-console.log(new URL('https://anonymous:flabada@developer.mozilla.org/en-US/docs/HTMLHyperlinkElementUtils.username?name=zzzz#3333'));
 
 export default {
   mounted() {
@@ -26,17 +23,15 @@ export default {
     div.setAttribute('data-name', 'myDiv');
     console.log('data-name:', div.getAttribute('data-name'));
 
-    div.addEventListener('click', () => {
+    function gotoFetchPage() {
       modal.alert({
-        message: '23333'
+        message: '将会前往fetch页面'
       }, (value) => {
-        div.removeEventListener('click');
-        navigator.pop();
-        navigator.push({
-          url: 'http://192.168.102.216:8081/dist/fetch/index.js'
-        });
+        div.removeEventListener('click', gotoFetchPage);
+        location.href = `${location.origin}/dist/fetch/index.js`;
       });
-    });
+    }
+    div.addEventListener('click', gotoFetchPage);
 
     // 将会更改div的背景色
     setTimeout(() => {
@@ -48,7 +43,7 @@ export default {
     const text = document.createElement('text');
     text.setAttribute('value', '这是一个链接');
     a.title = 'link';
-    a.href = "http://ztktct:zt123@192.168.102.216:8081/dist/fetch/index.js";
+    a.href = `${location.origin}/dist/fetch/index.js`;
     a.appendChild(text);
     document.body.appendChild(a);
 
