@@ -26,14 +26,14 @@ export default {
     div.setAttribute('data-name', 'myDiv');
     console.log('data-name:', div.getAttribute('data-name'));
 
-    div.addEventListener('click', function() {
+    div.addEventListener('click', () => {
       modal.alert({
         message: '23333'
-      }, value => {
+      }, (value) => {
         div.removeEventListener('click');
         navigator.pop();
         navigator.push({
-          url: "http://192.168.102.216:8081/dist/fetch/index.js"
+          url: 'http://192.168.102.216:8081/dist/fetch/index.js'
         });
       });
     });

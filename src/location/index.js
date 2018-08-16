@@ -1,9 +1,14 @@
-const env = weex.config.env;
+let platform = 'Web';
+
+if (weex && weex.config && weex.config.env) {
+  platform = weex.config.env.platform;
+}
 
 // eslint-disable-next-line
 let location = null;
 
-if (env.platform === 'Web' && global && global.location) {
+// global.location will throw TypeError in weex, why?
+if (platform === 'Web' && global && global.location) {
   location = global.location;
 } else {
   location = require('./location').default; // eslint-disable-line

@@ -12,12 +12,9 @@ const vueWebTemp = helper.rootNode(config.templateDir);
 
 // conditions
 const isWin = /^win/.test(process.platform);
-const isProduction = process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'analyse';
-const extractCss = config.prod.extractCss; // web是否提取css代码
 
 // plugins
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const webEntry = {};
 const weexEntry = {};
@@ -162,26 +159,9 @@ const loaders = [{
   use: ['happypack/loader?id=happy-babel-js'],
   exclude: config.excludeModuleReg
 }, {
-  test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-  loader: 'url-loader',
-  options: {
-    limit: 5120, // 5K
-    name: `resource/images/[name].[hash:7].[ext]`,
-    outputPath: isProduction ? '../' : '',
-    publicPath: isProduction ? config.prod.publicPath : config.outputPath
-  }
-}, {
   test: /\.scss$/,
   use: [
-    // 此处提取css可能会有坑，看weex更新情况再行处理
-    // in development will use vue-style-loader
-    // or in production and extractCss is true, this will use MiniCssExtractPlugin.loader
-    (isProduction && extractCss) ? {
-      loader: MiniCssExtractPlugin.loader,
-      options: {
-        publicPath: 'web'
-      }
-    } : 'vue-style-loader',
+    'vue-style-loader',
     // see https://github.com/webpack-contrib/css-loader#importloaders
     { loader: 'css-loader', options: { importLoaders: 2 } },
     'postcss-loader',
@@ -191,13 +171,7 @@ const loaders = [{
   test: /\.css$/,
   use: [
     // in development will use vue-style-loader
-    // or in production and extractCss is true, this will use MiniCssExtractPlugin.loader
-    (isProduction && extractCss) ? {
-      loader: MiniCssExtractPlugin.loader,
-      options: {
-        publicPath: 'web'
-      }
-    } : 'vue-style-loader',
+    'vue-style-loader',
     // see https://github.com/webpack-contrib/css-loader#importloaders
     { loader: 'css-loader', options: { importLoaders: 1 } },
     'postcss-loader'
@@ -232,7 +206,6 @@ const webConfig = {
    * See: http://webpack.github.io/docs/configuration.html#module
    */
   module: {
-    // webpack 2.0 
     rules: useEslint.concat([
       ...loaders,
       {

@@ -1,14 +1,14 @@
 {
-  "name": "panther-scaffold-weex",
+  "name": "weex-utils",
   "version": "0.1.0",
-  "description": "A weex template",
-  "author": "",
-  "private": true,
+  "description": "Utils for smooth weex and web platform gap",
+  "author": "zprial",
+  "private": false,
   "scripts": {
     "start": "npm run serve",
     "build": "npm run clean && npm run build:prod",
     "build:prod": "NODE_ENV=production webpack --env.NODE_ENV=production && echo ok",
-    "clean": "rimraf ./dist",
+    "clean": "rimraf ./lib",
     "lint": "eslint --ext .js,.vue src  --fix",
     "serve": "webpack-dev-server --env.NODE_ENV=development --progress && echo ok",
     "analyse": "npm run clean && NODE_ENV=analyse webpack --env.NODE_ENV=production && echo ok"
@@ -16,6 +16,15 @@
   "keywords": [
     "weex"
   ],
+  "main": "lib",
+  "files": [
+    "src",
+    "lib/**/*.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zprial/weex-utils.git"
+  },
   "license": "MIT",
   "dependencies": {
     "querystringify": "^2.0.0",
@@ -44,10 +53,8 @@
     "happypack": "^5.0.0",
     "html-webpack-plugin": "^3.2.0",
     "ip": "^1.1.5",
-    "mini-css-extract-plugin": "^0.4.1",
     "node-notifier": "^5.1.2",
     "node-sass": "^4.9.2",
-    "optimize-css-assets-webpack-plugin": "^5.0.0",
     "portfinder": "^1.0.16",
     "postcss-import": "^11.0.0",
     "postcss-loader": "^2.1.6",
