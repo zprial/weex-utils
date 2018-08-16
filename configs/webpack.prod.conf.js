@@ -6,7 +6,6 @@ const isAnalyse = process.env.NODE_ENV === 'analyse';
 /**
  * Webpack Plugins
  */
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const webConfig = commonConfig[0];
@@ -15,7 +14,6 @@ const webConfig = commonConfig[0];
  */
 module.exports = {
   entry: {
-    index: helper.rootNode('./src/index.js'),
     fetch: helper.rootNode('./src/fetch/index.js'),
     document: helper.rootNode('./src/document/index.js'),
     location: helper.rootNode('./src/location/index.js'),
@@ -48,28 +46,13 @@ module.exports = {
      *
      * See: http://webpack.github.io/docs/configuration.html#output-chunkfilename
      */
-    chunkFilename: '[id].[chunkhash].chunk.js'
+    chunkFilename: '[id].[chunkhash].chunk.js',
+
+    library: '[name]',
+    libraryTarget: 'umd' // 在 AMD 或 CommonJS 的 require 之后可访问
   },
   optimization: {
-    minimizer: [
-      new UglifyJsPlugin({
-        cache: true,
-        parallel: true, // Use multi-process parallel running to improve the build speed
-        sourceMap: true,
-        extractComments: true,
-        uglifyOptions: {
-          output: {
-            comments: false,
-            beautify: false,
-          },
-          compress: {
-            drop_console: true,
-            warnings: false,
-            drop_debugger: true,
-          },
-        },
-      }),
-    ]
+    minimize: false
   },
   /*
    * Add additional plugins to the compiler.

@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import location from '../../src/location';
+import location from 'weex-utils/lib/location';
 import URL from '../../src/location/URL';
 
 export default {

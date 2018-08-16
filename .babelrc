@@ -2,7 +2,6 @@
   "presets": [
     "stage-0",
     ["env", {
-      "modules": false,
       "targets": {
         "browsers": ["> 0.1%", "ios >= 8", "android >= 4"]
       }

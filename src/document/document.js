@@ -101,4 +101,3 @@ export default new Proxy(document, {
     return Reflect.defineProperty(target, property, descriptor);
   }
 });
-// export default document;
