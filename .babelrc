@@ -6,5 +6,6 @@
         "browsers": ["> 0.1%", "ios >= 8", "android >= 4"]
       }
     }]
-  ]
+  ],
+  "plugins": ["transform-vue-jsx"]
 }

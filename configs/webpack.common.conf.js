@@ -139,13 +139,13 @@ const useEslint = config.dev.useEslint ? [createLintingRule()] : []
 const plugins = [
   new HappyPack({
     id: 'happy-babel-js',
-    loaders: ['babel-loader?cacheDirectory=true'],
+    loaders: ['babel-loader'],
     threadPool: happyThreadPool,
     verbose: true
   }),
   new HappyPack({
     id: 'happy-babel-vue',
-    loaders: ['babel-loader?cacheDirectory=true'],
+    loaders: ['babel-loader'],
     threadPool: happyThreadPool,
     verbose: true
   })
