@@ -14,9 +14,11 @@ const webConfig = commonConfig[0];
  */
 module.exports = {
   entry: {
+    weexUtils: helper.rootNode('./src/index.js'),
     fetch: helper.rootNode('./src/fetch/index.js'),
     document: helper.rootNode('./src/document/index.js'),
     location: helper.rootNode('./src/location/index.js'),
+    querystring: helper.rootNode('./src/querystring/index.js'),
   },
   mode: 'production',
   module: webConfig.module,
