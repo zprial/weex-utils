@@ -5,6 +5,7 @@ Utils for smooth weex and web platform gap
 * [Fetch](./docs/fetch.md)
 * [Document](./docs/document.md)
 * [Location](./docs/location.md)
+* [querystring](./docs/querystring.md)
 
 ## Run Project
 
@@ -108,4 +109,18 @@ location.href = `${location.origin}/dist/fetch/index.js`;
 location.replace(`${location.origin}/dist/fetch/index.js`);
 
 location.reload();
+```
+
+### [Querystring](./docs/querystring.md)
+
+```js
+  import { querystring } from 'weex-utils';
+
+  querystring.parse('name=zprial&age=23'); // ->> {name: 'zprial', age: '23' }
+
+  // you will get: name=zprial&age=23
+  querystring.stringify({
+    name: 'zprial',
+    age: 23
+  });
 ```
