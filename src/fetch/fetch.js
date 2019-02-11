@@ -14,13 +14,16 @@ export default function (input, init) {
       headers[name] = value;
     });
 
-    stream.fetch({
+    const params = {
       method: request.method,
       url: request.url,
       headers,
-      type: 'text',
-      body: typeof request._bodyInit === 'undefined' ? null : request._bodyInit
-    }, (ret) => {
+      type: 'text'
+    };
+    if (typeof request._bodyInit !== 'undefined') {
+      params.body = request._bodyInit;
+    }
+    stream.fetch(params, (ret) => {
       // 不能单纯的判断 !ret.ok, ok 有等于 false 的情况
       if (typeof ret.ok === 'undefined') {
         reject(new TypeError('Network request failed'));
