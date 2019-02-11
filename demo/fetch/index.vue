@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import fetch from 'weex-utils/lib/fetch';
+import fetch from '../../src/fetch';
 
 const modal = weex.requireModule('modal');
 
